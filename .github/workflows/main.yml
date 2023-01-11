@@ -17,7 +17,7 @@ jobs:
         
   deploy:
     needs: build
-    environment: develop
+    environment: ${{ github.event.release.target_commitish }}
     
     runs-on: ubuntu-latest
     
