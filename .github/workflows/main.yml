@@ -1,0 +1,24 @@
+on:
+  push
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - run: echo some content >output.txt
+      
+    - uses: actions/upload-artifact@v3
+      with:
+        name: artifacts
+        path: output.txt
+        
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/download-artifact@v3
+      with:
+        name: artifacts
+        
+    - run: cat output.txt
