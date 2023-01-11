@@ -14,6 +14,9 @@ jobs:
         path: output.txt
         
   deploy:
+    needs: build
+    environment: develop
+    
     runs-on: ubuntu-latest
     
     steps:
